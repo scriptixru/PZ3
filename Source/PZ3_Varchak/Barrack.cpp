@@ -21,6 +21,7 @@ ABarrack::ABarrack()
 	}
 
 	RootComponent = Mesh;
+	
 
 }
 
@@ -28,6 +29,18 @@ ABarrack::ABarrack()
 void ABarrack::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (GetWorld())
+	{
+		auto Instance = GetGameInstance();
+		if (Instance)
+		{
+
+			UMyGameInstance* GameInstance = Cast<UMyGameInstance>(Instance);
+			if (GameInstance)
+				GameInstance->OnClickReleased.BindUObject(this, &ABarrack::SetFinPointLocation);
+		}
+	}
 
 	FTimerHandle TimerH;
 	//ABarrack::MySpawnBarrackUnit();
@@ -53,5 +66,10 @@ void ABarrack::MySpawnBarrackUnit()
 	UMoveComponent* MoveComonent_add = NewObject<UMoveComponent>(MyChar, UMoveComponent::StaticClass(), TEXT("MoveComponent"));
 	MoveComonent_add->RegisterComponent();
 	MoveComonent_add->FinallyPoint = FinPoint->GetComponentLocation();
+}
+
+void ABarrack::SetFinPointLocation(FVector V)
+{
+	FinPoint->SetRelativeLocation(V);
 }
 
