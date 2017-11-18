@@ -10,6 +10,7 @@
 
 #include "BarrackUnit.h"
 #include "MoveComponent.h"
+#include "MyGameInstance.h"
 
 #include "Barrack.generated.h"
 
@@ -46,5 +47,8 @@ public:
 
 	UFUNCTION()
 	void MySpawnBarrackUnit();
+
+	UFUNCTION()
+	void SetFinPointLocation(FVector V);
 	
 };

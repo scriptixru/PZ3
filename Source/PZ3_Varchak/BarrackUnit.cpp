@@ -16,8 +16,8 @@ ABarrackUnit::ABarrackUnit()
 	{
 		this->GetMesh()->SetSkeletalMesh(loadedSkeletalMesh.Object);
 	}
-		
 
+	
 }
 
 // Called when the game starts or when spawned

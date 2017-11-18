@@ -4,8 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "MyGameInstance.h"
 #include "MyPlayerController.generated.h"
-//#include "Barrack.h"
+
 
 /**
  * 
@@ -17,12 +18,13 @@ class PZ3_VARCHAK_API AMyPlayerController : public APlayerController
 	
 public:
 	AMyPlayerController();
-	//UPROPERTY()
-	//ABarrack* CurrBarrack;
 
+	UMyGameInstance* CurrGameInst;
 
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
+	virtual void BeginPlay() override;
+
 	uint32 bMoveToMouseCursor : 1;
 	// Begin PlayerController interface
 	virtual void SetupInputComponent() override;
